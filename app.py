@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import utils.resume_parser as rp # available functions: parse_pdf, return_path
+import utils.resume_parser as rp # available functions: pdfToStr, ResumeParser
 
 app = Flask(__name__)
 
@@ -11,10 +11,10 @@ def send_file_path():
     if not file_path:
         return jsonify({'error': 'File path not provided'}), 400
 
-    response_string = rp.parse_pdf(file_path)
-    file_path = rp.return_path(file_path)
+    response_string = rp.pdfToStr(file_path)
+    JobRole = rp.ResumeParser(response_string)
 
-    return jsonify({'message': response_string, 'file_path': file_path})
+    return jsonify({'Job Role': JobRole})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

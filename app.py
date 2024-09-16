@@ -14,7 +14,7 @@ def send_file_path():
     response_string = rp.pdfToStr(file_path)
     JobRole = rp.ResumeParser(response_string)
 
-    return jsonify({'Job Role': JobRole})
+    return JobRole
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

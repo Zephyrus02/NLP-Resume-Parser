@@ -39,7 +39,9 @@ This project leverages a **BERT model** for resume parsing, integrates with the 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/Zephyrus02/NLP-Resume-Parser.git
+git clone https://github.com/Zephyrus02/Frontend-for-NLP-Based-Resume-Parser.git
+git clone https://github.com/Zephyrus02/Backend-For-NLP-Based-Resume-Parser.git
 ```
 
 ### 2. Install Dependencies for Frontend and Backend

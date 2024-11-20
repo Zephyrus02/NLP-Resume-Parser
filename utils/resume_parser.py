@@ -1,12 +1,5 @@
-import fitz
 import tensorflow as tf
 from transformers import TFBertForSequenceClassification, BertTokenizer
-import google.generativeai as genai
-import os
-
-API_KEY = 'your_api_key'
-os.environ["API_KEY"] = API_KEY
-genai.configure(api_key=os.environ["API_KEY"])
 
 def ResumeParser(resume_text):
 
@@ -41,24 +34,3 @@ def ResumeParser(resume_text):
     predicted_job_role = job_categories[predicted_class]
 
     return predicted_job_role
-
-def get_recommended_courses(resume_text):
-    # Prepare the prompt for the Gemini API
-    prompt = (
-            f"Based on the following resume text, suggest recommended courses in the following format:\n"
-            f"Recommended Courses:\n"
-            f"1. name of course - Link to course\n"
-            f"2. \n"
-            f"3. \n"
-            f"4. \n"
-            f"5. \n\n"
-            f"{resume_text}"
-        )
-    # Create a Generative Model instance
-    model = genai.GenerativeModel("gemini-pro")
-
-    # Generate content using the model
-    response = model.generate_content(prompt)
-
-    # Return the text from the response
-    return response.text.strip()
